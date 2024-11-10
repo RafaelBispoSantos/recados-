@@ -15,7 +15,10 @@ import {
   Post,
   Query,
   UsePipes,
+  UseInterceptors,
 } from '@nestjs/common';
+import { AuthTokenInterceptor } from 'src/common/interceptors/auth-token.interceptor';
+//import { AddHeaderInterceptor } from 'src/common/interceptors/add-header.interceptor';
 
 //CRUD
 // Create -> POST -> Criar um recado
@@ -28,7 +31,7 @@ import {
 // PUT é utilizado para atualizar um recurso inteiro
 
 //DTO - Data Transfer object -> Objeto de tranferencia de dados
-
+@UseInterceptors(AuthTokenInterceptor)
 @Controller('recados')
 @UsePipes(ParseIntPipe)
 export class RecadosController {
@@ -37,12 +40,8 @@ export class RecadosController {
   @HttpCode(HttpStatus.OK)
   @Get()
   async findAll(@Query() paginationDto: PaginationDto) {
-    const { limit = 10, offset = 0 } = paginationDto;
-
-    console.log(limit, typeof limit);
-    console.log(offset);
-
-    const recados = await this.recadosService.findAll();
+    console.log('RecadosController findAll executado');
+    const recados = await this.recadosService.findAll(paginationDto);
     return recados;
   }
 

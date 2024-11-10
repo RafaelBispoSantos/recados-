@@ -5,6 +5,7 @@
 GET {{baseUrl}}/recados/
 ?limit=10
 &offset=0
+Authorization: Bearer 123456
 ###
 GET {{baseUrl}}/recados/-1/
 ###
@@ -12,9 +13,9 @@ POST {{baseUrl}}/recados/
 Content-Type: application/json
 
 {
-    "texto": "Ola boa tarde carla",
-    "deId": 5,
-    "paraId": 6
+    "texto": "Esse texto de teste2",
+    "deId": 2,
+    "paraId": 1
 }
 ###
 PATCH {{baseUrl}}/recados/15/
@@ -41,9 +42,9 @@ POST {{baseUrl}}/pessoas/
 Content-Type: application/json
 
 {
-    "email": "CarlaPatricia@email.com",
-    "password": "tdgej85745",
-    "nome": "Carla Patricia"
+    "email": "RafaelBispo@email.com",
+    "password": "14856dfhtst",
+    "nome": "Rafael Bispo dos Santos"
 }
 ###
 PATCH {{baseUrl}}/pessoas/3/
