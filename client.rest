@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:3000
+
+# Recados
+###
+GET {{baseUrl}}/recados/
+?limit=10
+&offset=0
+###
+GET {{baseUrl}}/recados/-1/
+###
+POST {{baseUrl}}/recados/
+Content-Type: application/json
+
+{
+    "texto": "Ola boa tarde carla",
+    "deId": 5,
+    "paraId": 6
+}
+###
+PATCH {{baseUrl}}/recados/15/
+Content-Type: application/json
+
+{
+    "texto": "Ola boa Noite Carla",
+    "lido": true
+}
+    
+
+
+### Apaga um recado
+DELETE {{baseUrl}}/recados/2/
+
+
+# Pessoa
+###
+GET {{baseUrl}}/pessoas/
+###
+GET {{baseUrl}}/pessoas/1/
+###
+POST {{baseUrl}}/pessoas/
+Content-Type: application/json
+
+{
+    "email": "CarlaPatricia@email.com",
+    "password": "tdgej85745",
+    "nome": "Carla Patricia"
+}
+###
+PATCH {{baseUrl}}/pessoas/3/
+Content-Type: application/json
+
+{
+    "nome": "Eduardo Bispo",
+    "password": "5436845"
+}
+    
+
+
+### Apaga um recado
+DELETE {{baseUrl}}/pessoas/2/
