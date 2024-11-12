@@ -13,13 +13,14 @@ import {
   Param,
   Patch,
   Post,
+  Req,
   Query,
   UsePipes,
   UseInterceptors,
 } from '@nestjs/common';
 import { AuthTokenInterceptor } from 'src/common/interceptors/auth-token.interceptor';
 //import { AddHeaderInterceptor } from 'src/common/interceptors/add-header.interceptor';
-
+import { Request } from 'express';
 //CRUD
 // Create -> POST -> Criar um recado
 // READ  -> GEt -> Ler todos os recados
@@ -39,8 +40,9 @@ export class RecadosController {
 
   @HttpCode(HttpStatus.OK)
   @Get()
-  async findAll(@Query() paginationDto: PaginationDto) {
-    console.log('RecadosController findAll executado');
+  async findAll(@Query() paginationDto: PaginationDto, @Req() req: Request) {
+    //console.log('RecadosController findAll executado');
+    console.log('RecadosController', req['user']);
     const recados = await this.recadosService.findAll(paginationDto);
     return recados;
   }
